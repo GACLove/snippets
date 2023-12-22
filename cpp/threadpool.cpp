@@ -1,6 +1,3 @@
-//
-// Created by EDY on 2023/10/10.
-//
 #include <iostream>
 #include <queue>
 #include <vector>
