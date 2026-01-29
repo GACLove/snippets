@@ -6,7 +6,7 @@
 # 2. Copy this file to ~/.bash_custom/proxy.sh
 # 3. echo 'source "$HOME/.bash_custom/proxy.sh"' >> ~/.bashrc
 # 4. For zsh users: echo 'source "$HOME/.bash_custom/proxy.sh"' >> ~/.zshrc
-# 5. Restart terminal or run: source ~/.bashrc or source ~/.zshrc
+# 5. Restart terminal or run: source ~/.bashrc
 # 
 # USAGE:
 # proxy_on                              - Enable proxy for current session
@@ -23,7 +23,7 @@
 
 # ====================== PROXY CONFIGURATION ======================
 # Configuration Area (modify as needed)
-PROXY_URL='<put your proxy url here>'  # Proxy with username/password (集群)
+PROXY_URL='!!!SET PROXY'  # Proxy with username/password
 NO_PROXY="localhost,127.0.0.1,192.168.*,10.*,.internal"    # Addresses to bypass the proxy
 
 # ====================== FUNCTION DEFINITIONS ======================
@@ -39,7 +39,7 @@ function proxy_on {
     export NO_PROXY="$NO_PROXY"
 
     # Securely display the proxy URL (hides password)
-    local display_url="${PROXY_URL/@*/@***}"
+    local display_url=$(echo "$PROXY_URL" | sed -E 's#https?://[^@]+@#http://***:***@#')
     echo -e "\033[32mProxy enabled\033[0m\n  Proxy address: ${display_url}"
 }
 
